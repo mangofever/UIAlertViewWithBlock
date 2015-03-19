@@ -14,7 +14,7 @@ pod 'UIAlertViewBlockExtension'
 - Similar with UIAlertController in iOS 8.0
 
 ## Examples
-<code>
+```
 UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"title" message:@"message"];
 
   [alertView addButtonWithTitle:@"OK" actionBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
@@ -28,7 +28,7 @@ UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"title" message:@"mess
   }];
     
 [alertView show];
-</code>
+```
 
 ## Requirements
 - iOS version 4.0 or later
