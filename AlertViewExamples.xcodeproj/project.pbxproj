@@ -14,6 +14,8 @@
 		DB7E8FFD1AB972E100FF9E5F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7E8FFC1AB972E100FF9E5F /* Images.xcassets */; };
 		DB7E90001AB972E100FF9E5F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7E8FFE1AB972E100FF9E5F /* LaunchScreen.xib */; };
 		DB7E900C1AB972E100FF9E5F /* AlertViewExamplesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E900B1AB972E100FF9E5F /* AlertViewExamplesTests.m */; };
+		DB7E90181AB9735E00FF9E5F /* UIAlertView+BlockExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E90171AB9735E00FF9E5F /* UIAlertView+BlockExtension.m */; };
+		DB7E901B1AB9750000FF9E5F /* AlertViewActionDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E901A1AB9750000FF9E5F /* AlertViewActionDispatcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		DB7E90051AB972E100FF9E5F /* AlertViewExamplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlertViewExamplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7E900A1AB972E100FF9E5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB7E900B1AB972E100FF9E5F /* AlertViewExamplesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertViewExamplesTests.m; sourceTree = "<group>"; };
+		DB7E90161AB9735E00FF9E5F /* UIAlertView+BlockExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+BlockExtension.h"; sourceTree = "<group>"; };
+		DB7E90171AB9735E00FF9E5F /* UIAlertView+BlockExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+BlockExtension.m"; sourceTree = "<group>"; };
+		DB7E90191AB9750000FF9E5F /* AlertViewActionDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewActionDispatcher.h; sourceTree = "<group>"; };
+		DB7E901A1AB9750000FF9E5F /* AlertViewActionDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewActionDispatcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 		DB7E8FEE1AB972E100FF9E5F /* AlertViewExamples */ = {
 			isa = PBXGroup;
 			children = (
+				DB7E90151AB972EC00FF9E5F /* UIAlertViewBlockExtension */,
 				DB7E8FF31AB972E100FF9E5F /* AppDelegate.h */,
 				DB7E8FF41AB972E100FF9E5F /* AppDelegate.m */,
 				DB7E8FF61AB972E100FF9E5F /* ViewController.h */,
@@ -117,6 +124,17 @@
 				DB7E900A1AB972E100FF9E5F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB7E90151AB972EC00FF9E5F /* UIAlertViewBlockExtension */ = {
+			isa = PBXGroup;
+			children = (
+				DB7E90161AB9735E00FF9E5F /* UIAlertView+BlockExtension.h */,
+				DB7E90171AB9735E00FF9E5F /* UIAlertView+BlockExtension.m */,
+				DB7E90191AB9750000FF9E5F /* AlertViewActionDispatcher.h */,
+				DB7E901A1AB9750000FF9E5F /* AlertViewActionDispatcher.m */,
+			);
+			path = UIAlertViewBlockExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,7 +239,9 @@
 			files = (
 				DB7E8FF81AB972E100FF9E5F /* ViewController.m in Sources */,
 				DB7E8FF51AB972E100FF9E5F /* AppDelegate.m in Sources */,
+				DB7E901B1AB9750000FF9E5F /* AlertViewActionDispatcher.m in Sources */,
 				DB7E8FF21AB972E100FF9E5F /* main.m in Sources */,
+				DB7E90181AB9735E00FF9E5F /* UIAlertView+BlockExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

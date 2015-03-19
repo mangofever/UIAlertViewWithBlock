@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UIAlertView+BlockExtension.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"title" message:@"message"];
+    [alertView addButtonWithTitle:@"OK" actionBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        NSLog(@"clicked button index : %lu", buttonIndex);
+        NSLog(@"cancel button index : %lu", alertView.cancelButtonIndex);
+    }];
+    [alertView addCancelButtonWithTitle:@"Cancel" actionBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        NSLog(@"clicked button index : %lu", buttonIndex);
+        NSLog(@"cancel button index : %lu", alertView.cancelButtonIndex);
+    }];
+    
+    [alertView show];
+    
     return YES;
 }
 
