@@ -1,7 +1,5 @@
 # UIAlertViewBlockExtension
 UIAlertView category for block expression
-There are a lot of UIAlertView extensions on github.
-But I think 
 
 ## Installation
 ### Using cocoapods
