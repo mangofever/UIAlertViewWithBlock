@@ -25,11 +25,15 @@
 }
 
 - (void)addActionBlock:(UIAlertActionBlock)actionBlock withButtonIndex:(NSInteger)buttonIndex {
-    [self.actionBlockDictionary setObject:actionBlock forKey:@(buttonIndex)];
+    if (actionBlock) {
+        [self.actionBlockDictionary setObject:actionBlock forKey:@(buttonIndex)];
+    }
 }
 
 - (void)addCancelActionBlock:(UIAlertActionBlock)actionBlock {
-    [self.actionBlockDictionary setObject:actionBlock forKey:@(ActionByCancel)];
+    if (actionBlock) {
+        [self.actionBlockDictionary setObject:actionBlock forKey:@(ActionByCancel)];
+    }
 }
 
 - (BOOL)excuteActionBlockForAlertView:(UIAlertView *)alertView buttonIndex:(NSInteger)buttonIndex {
