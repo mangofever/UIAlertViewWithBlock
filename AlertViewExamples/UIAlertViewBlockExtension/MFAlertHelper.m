@@ -1,31 +1,38 @@
 //
-//  UIAlertViewWithBlock.m
+//  MFAlertHelper.m
 //  AlertViewExamples
 //
 //  Created by danube83 on 2015. 12. 23..
 //  Copyright © 2015년 Mangofever. All rights reserved.
 //
 
-#import "UIAlertViewWithBlock.h"
+#import "MFAlertHelper.h"
 #import "UIAlertView+BlockExtension.h"
 
 
-@implementation UIAlertViewWithBlock
+@implementation MFAlertHelper
 
-+ (void)showAlertViewWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelBlock:(void (^)(void))cancelBlock confirmButtonTitle:(NSString *)confirmButtonTitle confirmBlock:(void (^)(NSInteger buttonIndex))confirmBlock
++ (void)showAlertViewWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelBlock:(void (^)(void))cancelBlock confirmButtonTitle:(NSString *)confirmButtonTitle confirmBlock:(void (^)(NSInteger buttonIndex))confirmBlock showingController:(id)showingController
 {
     Class alertController = NSClassFromString(@"UIAlertController");
     if (alertController) {
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        if(![showingController isKindOfClass:[UIViewController class]]) {
+            NSLog(@"showingController is not kind of UIViewController class.");
+            return;
+        }
         
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        __block id viewController = showingController;
         if (cancelButtonTitle && ![cancelButtonTitle isEqualToString:@""]) {
             
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle
-                                                                   style:UIAlertActionStyleCancel
+                                                                   style:UIAlertActionStyleDestructive
                                                                  handler:^(UIAlertAction * _Nonnull action) {
-                                                                     if(cancelBlock)
+                                                                     if(cancelBlock) {
                                                                          cancelBlock();
+                                                                         [viewController dismissViewControllerAnimated:YES completion:nil];
+                                                                     }
                                                                  }];
             [alert addAction:cancelAction];
         }
@@ -35,13 +42,18 @@
             UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:confirmButtonTitle
                                                                     style:UIAlertActionStyleDefault
                                                                   handler:^(UIAlertAction * _Nonnull action) {
-                                                                      if(confirmBlock)
+                                                                      if(confirmBlock) {
                                                                           confirmBlock(0);
+                                                                          [viewController dismissViewControllerAnimated:YES completion:nil];
+                                                                      }
                                                                   }];
             
             [alert addAction:confirmAction];
             
         }
+        
+        [showingController presentViewController:alert animated:YES completion:nil];
+        
 
     } else {
         
@@ -62,6 +74,8 @@
                                    }];
             
         }
+        
+        [alertView show];
 
     }
 }

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "UIAlertViewWithBlock.h"
 #import "UIAlertView+BlockExtension.h"
 
 @interface ViewController ()
@@ -23,6 +24,20 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)clickAlertController:(id)sender {
+    
+    [UIAlertViewWithBlock showAlertViewWithTitle:@"title"
+                                         message:@"message!!!"
+                               cancelButtonTitle:@"cancel"
+                                     cancelBlock:^{
+                                         NSLog(@"click cancel");
+                                     }
+                              confirmButtonTitle:@"OK"
+                                    confirmBlock:^(NSInteger buttonIndex) {
+                                        NSLog(@"click OK");
+                                    }
+                               showingController:self];
 }
 - (IBAction)clickCancelAndOK:(id)sender {
     UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"title" message:@"message"];
