@@ -24,36 +24,37 @@
     return self;
 }
 
-- (void)addActionBlock:(UIAlertActionBlock)actionBlock withButtonIndex:(NSInteger)buttonIndex {
-    if (actionBlock) {
-        [self.actionBlockDictionary setObject:actionBlock forKey:@(buttonIndex)];
+- (void)registerAction:(UIAlertActionBlock)action forButtonIndex:(NSInteger)buttonIndex {
+    if (action) {
+        [self.actionBlockDictionary setObject:action forKey:@(buttonIndex)];
     }
 }
 
-- (void)addCancelActionBlock:(UIAlertActionBlock)actionBlock {
-    if (actionBlock) {
-        [self.actionBlockDictionary setObject:actionBlock forKey:@(ActionByCancel)];
+- (void)registerCancelAction:(UIAlertActionBlock)action {
+    if (action) {
+        [self.actionBlockDictionary setObject:action forKey:@(ActionByCancel)];
     }
-}
-
-- (BOOL)excuteActionBlockForAlertView:(UIAlertView *)alertView buttonIndex:(NSInteger)buttonIndex {
-    UIAlertActionBlock actionBlock = [self.actionBlockDictionary objectForKey:@(buttonIndex)];
-    if (actionBlock) {
-        actionBlock(alertView, buttonIndex);
-        return YES;
-    }
-    return NO;
 }
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [self excuteActionBlockForAlertView:alertView buttonIndex:buttonIndex];
+    [self excuteActionForAlertView:alertView buttonIndex:buttonIndex];
 }
 
 - (void)alertViewCancel:(UIAlertView *)alertView {
-    if ([self excuteActionBlockForAlertView:alertView buttonIndex:ActionByCancel] == NO) {
-        [self excuteActionBlockForAlertView:alertView buttonIndex:alertView.cancelButtonIndex];
+    if ([self excuteActionForAlertView:alertView buttonIndex:ActionByCancel] == NO) {
+        [self excuteActionForAlertView:alertView buttonIndex:alertView.cancelButtonIndex];
     }
+}
+
+#pragma mark - private
+- (BOOL)excuteActionForAlertView:(UIAlertView *)alertView buttonIndex:(NSInteger)buttonIndex {
+    UIAlertActionBlock action = [self.actionBlockDictionary objectForKey:@(buttonIndex)];
+    if (action) {
+        action(alertView, buttonIndex);
+        return YES;
+    }
+    return NO;
 }
 
 @end

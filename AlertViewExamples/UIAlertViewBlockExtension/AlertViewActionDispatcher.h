@@ -15,7 +15,7 @@ typedef void (^UIAlertActionBlock) (UIAlertView *alertView, NSInteger buttonInde
 
 @interface AlertViewActionDispatcher : NSObject
 
-- (void)addActionBlock:(UIAlertActionBlock)actionBlock withButtonIndex:(NSInteger)buttonIndex;
-- (void)addCancelActionBlock:(UIAlertActionBlock)actionBlock;
+- (void)registerAction:(UIAlertActionBlock)action forButtonIndex:(NSInteger)buttonIndex;
+- (void)registerCancelAction:(UIAlertActionBlock)action;
 
 @end

@@ -15,8 +15,14 @@
 
 + (UIAlertView *)alertViewWithTitle:(NSString *)title message:(NSString *)message;
 
-- (void)addButtonWithTitle:(NSString *)title actionBlock:(UIAlertActionBlock)actionBlock;
-- (void)addCancelButtonWithTitle:(NSString *)title actionBlock:(UIAlertActionBlock)actionBlock;
-- (void)addCancelActionBlock:(UIAlertActionBlock)actionBlock;
+- (void)addButtonWithTitle:(NSString *)title action:(UIAlertActionBlock)action;
+- (void)addCancelButtonWithTitle:(NSString *)title action:(UIAlertActionBlock)action;
+- (void)addCancelAction:(UIAlertActionBlock)action;
+
+@end
+
+@interface UIAlertView (ConvenientMethods)
+
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(UIAlertActionBlock)action;
 
 @end

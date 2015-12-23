@@ -26,11 +26,11 @@
 }
 - (IBAction)clickCancelAndOK:(id)sender {
     UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"title" message:@"message"];
-    [alertView addButtonWithTitle:@"OK" actionBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [alertView addButtonWithTitle:@"OK" action:^(UIAlertView *alertView, NSInteger buttonIndex) {
         NSLog(@"clicked button index : %lu", buttonIndex);
         NSLog(@"cancel button index : %lu", alertView.cancelButtonIndex);
     }];
-    [alertView addCancelButtonWithTitle:@"Cancel" actionBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [alertView addCancelButtonWithTitle:@"Cancel" action:^(UIAlertView *alertView, NSInteger buttonIndex) {
         NSLog(@"clicked button index : %lu", buttonIndex);
         NSLog(@"cancel button index : %lu", alertView.cancelButtonIndex);
     }];
@@ -40,8 +40,15 @@
 
 - (IBAction)clickNilBlock:(id)sender {
     UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"title" message:@"message"];
-    [alertView addButtonWithTitle:@"OK" actionBlock:nil];
+    [alertView addButtonWithTitle:@"OK" action:nil];
     [alertView show];
+}
+
+- (IBAction)clickConvenient:(id)sender {
+    [UIAlertView showAlertWithTitle:@"Convenient!" message:@"Good" cancelButtonTitle:@"OK" action:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        NSLog(@"clicked button index : %lu", buttonIndex);
+        NSLog(@"cancel button index : %lu", alertView.cancelButtonIndex);
+    }];
 }
 
 @end
