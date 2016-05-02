@@ -8,7 +8,7 @@
 
 #import "UIAlertView+BlockExtension.h"
 #import <objc/runtime.h>
-#import "AlertViewBuilder.h"
+#import "BEAlertViewBuilder.h"
 
 @implementation UIAlertView (BlockExtension)
 
@@ -17,7 +17,7 @@
 + (UIAlertView *)alertViewWithTitle:(NSString *)title message:(NSString *)message {
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-    alertView.actionDispatcher = [[AlertViewActionDispatcher alloc] init];
+    alertView.actionDispatcher = [[BEAlertViewActionDispatcher alloc] init];
     
     return alertView;
 }
@@ -35,12 +35,12 @@
 
 #pragma mark - getter/setter for actionDispatcher with associated object
 
-- (void)setActionDispatcher:(AlertViewActionDispatcher *)actionDispatcher {
+- (void)setActionDispatcher:(BEAlertViewActionDispatcher *)actionDispatcher {
     self.delegate = actionDispatcher;
     objc_setAssociatedObject(self, @selector(actionDispatcher), actionDispatcher, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (AlertViewActionDispatcher *)actionDispatcher {
+- (BEAlertViewActionDispatcher *)actionDispatcher {
     return objc_getAssociatedObject(self, @selector(actionDispatcher));
 }
 
@@ -50,7 +50,7 @@
 @implementation UIAlertView (ConvenientMethods)
 
 + (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(void (^)())action {
-    AlertViewBuilder *builder = [[AlertViewBuilder alloc] init];
+    BEAlertViewBuilder *builder = [[BEAlertViewBuilder alloc] init];
     builder.title = title;
     builder.message = message;
     
@@ -60,7 +60,7 @@
 }
 
 + (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelAction:(void (^)())cancelAction otherButtonTitle:(NSString *)otherButtonTitle otherButtonAction:(void (^)())otherAction {
-    AlertViewBuilder *builder = [[AlertViewBuilder alloc] init];
+    BEAlertViewBuilder *builder = [[BEAlertViewBuilder alloc] init];
     builder.title = title;
     builder.message = message;
     

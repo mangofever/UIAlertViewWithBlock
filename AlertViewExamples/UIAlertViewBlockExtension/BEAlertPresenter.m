@@ -1,5 +1,5 @@
 //
-//  AlertPresenter.m
+//  BEAlertPresenter.m
 //  AlertViewExamples
 //
 //  Created by chanhyuk on 2016. 5. 2..
@@ -7,21 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AlertPresenter.h"
-#import "AlertButton.h"
+#import "BEAlertPresenter.h"
+#import "BEAlertButton.h"
 #import "UIAlertView+BlockExtension.h"
-#import "AlertViewBuilder.h"
+#import "BEAlertViewBuilder.h"
 
-@implementation AlertPresenter
+@implementation BEAlertPresenter
 
 - (void)show
 {
     if ([UIAlertController class]) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:self.builder.title message:self.builder.message preferredStyle:UIAlertControllerStyleAlert];
         
-        for (AlertButton *button in self.builder.buttons) {
+        for (BEAlertButton *button in self.builder.buttons) {
             UIAlertActionStyle style = UIAlertActionStyleDefault;
-            if (button.type == AlertButtonTypeCancel) {
+            if (button.type == BEAlertButtonTypeCancel) {
                 style = UIAlertActionStyleCancel;
             }
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:button.title style:style
@@ -36,10 +36,10 @@
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
     } else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:self.builder.title message:self.builder.message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-        alertView.actionDispatcher = [[AlertViewActionDispatcher alloc] init];
+        alertView.actionDispatcher = [[BEAlertViewActionDispatcher alloc] init];
         
-        for (AlertButton *button in self.builder.buttons) {
-            if (button.type == AlertButtonTypeCancel) {
+        for (BEAlertButton *button in self.builder.buttons) {
+            if (button.type == BEAlertButtonTypeCancel) {
                 [alertView addCancelButtonWithTitle:button.title action:button.action];
             } else {
                 [alertView addButtonWithTitle:button.title action:button.action];

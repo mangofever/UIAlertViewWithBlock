@@ -1,5 +1,5 @@
 //
-//  AlertViewBuilder.h
+//  BEAlertViewBuilder.h
 //  AlertViewExamples
 //
 //  Created by chanhyuk on 2016. 4. 29..
@@ -7,18 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AlertPresenter.h"
-#import "AlertButton.h"
+#import "BEAlertPresenter.h"
+#import "BEAlertButton.h"
 
 typedef void (^UIAlertActionVoidBlock) (void);
 
-@interface AlertViewBuilder : NSObject
+@interface BEAlertViewBuilder : NSObject
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *message;
 @property (nonatomic, strong) NSMutableArray *buttons;
 
-@property (nonatomic, readonly) AlertPresenter *presenter;
+@property (nonatomic, readonly) BEAlertPresenter *presenter;
 
 - (void)addCancelButtonWithTitle:(NSString *)title action:(UIAlertActionVoidBlock)action;
 - (void)addButtonWithTitle:(NSString *)title action:(UIAlertActionVoidBlock)action;

@@ -1,5 +1,5 @@
 //
-//  AlertViewActionDispatcher.h
+//  BEAlertViewActionDispatcher.h
 //  AlertViewExamples
 //
 //  Created by Mango on 2015. 3. 18..
@@ -12,13 +12,13 @@
 
 typedef void (^UIAlertActionBlock) (id alert, NSInteger buttonIndex);
 
-@interface AlertViewActionDispatcher : NSObject
+@interface BEAlertViewActionDispatcher : NSObject
 
 - (void)registerVoidAction:(void (^)())action forButtonIndex:(NSInteger)buttonIndex;
 
 @end
 
-@interface AlertViewActionDispatcher (Deprecated)
+@interface BEAlertViewActionDispatcher (Deprecated)
 
 - (void)registerAction:(UIAlertActionBlock)action forButtonIndex:(NSInteger)buttonIndex;
 - (void)registerCancelAction:(UIAlertActionBlock)action;

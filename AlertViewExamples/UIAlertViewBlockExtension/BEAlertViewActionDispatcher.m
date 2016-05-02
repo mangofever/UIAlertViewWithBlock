@@ -1,21 +1,21 @@
 //
-//  AlertViewActionDispatcher.m
+//  BEAlertViewActionDispatcher.m
 //  AlertViewExamples
 //
 //  Created by Mango on 2015. 3. 18..
 //  Copyright (c) 2015년 Mangofever. All rights reserved.
 //
 
-#import "AlertViewActionDispatcher.h"
+#import "BEAlertViewActionDispatcher.h"
 #import <UIKit/UIKit.h>
 
-@interface AlertViewActionDispatcher ()
+@interface BEAlertViewActionDispatcher ()
 
 @property (nonatomic, strong) NSMutableDictionary *actionBlockDictionary;
 
 @end
 
-@implementation AlertViewActionDispatcher
+@implementation BEAlertViewActionDispatcher
 
 - (id)init {
     self = [super init];
@@ -55,7 +55,7 @@
 
 @end
 
-@implementation AlertViewActionDispatcher (Deprecated)
+@implementation BEAlertViewActionDispatcher (Deprecated)
 
 - (void)registerAction:(UIAlertActionBlock)action forButtonIndex:(NSInteger)buttonIndex {
     if (action) {

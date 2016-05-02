@@ -1,5 +1,5 @@
 //
-//  AlertPresenter.h
+//  BEAlertPresenter.h
 //  AlertViewExamples
 //
 //  Created by chanhyuk on 2016. 5. 2..
@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class AlertViewBuilder;
+@class BEAlertViewBuilder;
 
-@interface AlertPresenter : NSObject
+@interface BEAlertPresenter : NSObject
 
-@property (nonatomic, weak) AlertViewBuilder *builder;
+@property (nonatomic, weak) BEAlertViewBuilder *builder;
 
 - (void)show;
 

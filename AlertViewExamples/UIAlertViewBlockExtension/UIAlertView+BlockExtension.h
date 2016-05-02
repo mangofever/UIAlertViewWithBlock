@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AlertViewActionDispatcher.h"
+#import "BEAlertViewActionDispatcher.h"
 
 @interface UIAlertView (BlockExtension)
 
-@property (strong, nonatomic) AlertViewActionDispatcher *actionDispatcher;
+@property (strong, nonatomic) BEAlertViewActionDispatcher *actionDispatcher;
 
 + (UIAlertView *)alertViewWithTitle:(NSString *)title message:(NSString *)message;
 

@@ -1,5 +1,5 @@
 //
-//  AlertButton.h
+//  BEAlertButton.h
 //  AlertViewExamples
 //
 //  Created by chanhyuk on 2016. 4. 29..
@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, AlertButtonType){
-    AlertButtonTypeCancel,
-    AlertButtonTypeOthers
+typedef NS_ENUM(NSInteger, BEAlertButtonType){
+    BEAlertButtonTypeCancel,
+    BEAlertButtonTypeOthers
 };
 
-@interface AlertButton : NSObject
+@interface BEAlertButton : NSObject
 
-@property (nonatomic) AlertButtonType type;
+@property (nonatomic) BEAlertButtonType type;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) void (^action) (void);
 
