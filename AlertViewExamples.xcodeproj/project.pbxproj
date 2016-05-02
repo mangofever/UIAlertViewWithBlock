@@ -10,7 +10,6 @@
 		7169AD301CD34CF800BBE774 /* AlertViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7169AD2F1CD34CF800BBE774 /* AlertViewBuilder.m */; };
 		7169AD361CD367D100BBE774 /* AlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7169AD351CD367D100BBE774 /* AlertButton.m */; };
 		7169AD3A1CD7016B00BBE774 /* AlertPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7169AD391CD7016B00BBE774 /* AlertPresenter.m */; };
-		7169AD3D1CD7414900BBE774 /* AlertViewFluentBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7169AD3C1CD7414900BBE774 /* AlertViewFluentBuilder.m */; };
 		DB7E8FF21AB972E100FF9E5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FF11AB972E100FF9E5F /* main.m */; };
 		DB7E8FF51AB972E100FF9E5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FF41AB972E100FF9E5F /* AppDelegate.m */; };
 		DB7E8FF81AB972E100FF9E5F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E8FF71AB972E100FF9E5F /* ViewController.m */; };
@@ -39,8 +38,6 @@
 		7169AD351CD367D100BBE774 /* AlertButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertButton.m; sourceTree = "<group>"; };
 		7169AD381CD7016B00BBE774 /* AlertPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPresenter.h; sourceTree = "<group>"; };
 		7169AD391CD7016B00BBE774 /* AlertPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPresenter.m; sourceTree = "<group>"; };
-		7169AD3B1CD7414900BBE774 /* AlertViewFluentBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewFluentBuilder.h; sourceTree = "<group>"; };
-		7169AD3C1CD7414900BBE774 /* AlertViewFluentBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewFluentBuilder.m; sourceTree = "<group>"; };
 		DB7E8FEC1AB972E100FF9E5F /* AlertViewExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlertViewExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7E8FF01AB972E100FF9E5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB7E8FF11AB972E100FF9E5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -151,8 +148,6 @@
 				7169AD351CD367D100BBE774 /* AlertButton.m */,
 				7169AD381CD7016B00BBE774 /* AlertPresenter.h */,
 				7169AD391CD7016B00BBE774 /* AlertPresenter.m */,
-				7169AD3B1CD7414900BBE774 /* AlertViewFluentBuilder.h */,
-				7169AD3C1CD7414900BBE774 /* AlertViewFluentBuilder.m */,
 			);
 			path = UIAlertViewBlockExtension;
 			sourceTree = "<group>";
@@ -259,7 +254,6 @@
 			files = (
 				7169AD361CD367D100BBE774 /* AlertButton.m in Sources */,
 				DB7E8FF81AB972E100FF9E5F /* ViewController.m in Sources */,
-				7169AD3D1CD7414900BBE774 /* AlertViewFluentBuilder.m in Sources */,
 				DB7E8FF51AB972E100FF9E5F /* AppDelegate.m in Sources */,
 				7169AD3A1CD7016B00BBE774 /* AlertPresenter.m in Sources */,
 				DB7E901B1AB9750000FF9E5F /* AlertViewActionDispatcher.m in Sources */,

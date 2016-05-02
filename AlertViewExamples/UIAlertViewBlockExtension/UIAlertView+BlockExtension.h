@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "AlertViewActionDispatcher.h"
-#import "AlertViewFluentBuilder.h"
 
 @interface UIAlertView (BlockExtension)
 
@@ -21,9 +20,7 @@
 
 @end
 
-@interface UIAlertView (FluentMethods)
-
-+ (AlertViewFluentBuilder *)with;
+@interface UIAlertView (ConvenientMethods)
 
 + (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(void (^)())action;
 + (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelAction:(void (^)())cancelAction otherButtonTitle:(NSString *)otherButtonTitle otherButtonAction:(void (^)())otherAction;

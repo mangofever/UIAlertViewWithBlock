@@ -47,11 +47,7 @@
 
 @end
 
-@implementation UIAlertView (FluentMethods)
-
-+ (AlertViewFluentBuilder *)with {
-    return nil;
-}
+@implementation UIAlertView (ConvenientMethods)
 
 + (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(void (^)())action {
     AlertViewBuilder *builder = [[AlertViewBuilder alloc] init];
