@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "MFAlertHelper.h"
 #import "UIAlertView+BlockExtension.h"
 
 @interface ViewController ()
@@ -25,20 +24,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)clickAlertController:(id)sender {
-    
-    [MFAlertHelper showAlertViewWithTitle:@"title"
-                                  message:@"message!!!"
-                        cancelButtonTitle:@"cancel"
-                              cancelBlock:^{
-                                  NSLog(@"click cancel");
-                              }
-                       confirmButtonTitle:@"OK"
-                             confirmBlock:^(NSInteger buttonIndex) {
-                                 NSLog(@"click OK");
-                             }
-                        showingController:self];
-}
+
 - (IBAction)clickCancelAndOK:(id)sender {
     UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"title" message:@"message"];
     [alertView addButtonWithTitle:@"OK" action:^(UIAlertView *alertView, NSInteger buttonIndex) {
@@ -60,9 +46,8 @@
 }
 
 - (IBAction)clickConvenient:(id)sender {
-    [UIAlertView showAlertWithTitle:@"Convenient!" message:@"Good" cancelButtonTitle:@"OK" action:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        NSLog(@"clicked button index : %lu", buttonIndex);
-        NSLog(@"cancel button index : %lu", alertView.cancelButtonIndex);
+    [UIAlertView showWithTitle:@"test" messsage:@"gogogo" cancelButtonTitle:@"cancel" action:^{
+        NSLog(@"cancel");
     }];
 }
 

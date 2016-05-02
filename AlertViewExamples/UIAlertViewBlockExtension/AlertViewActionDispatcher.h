@@ -7,13 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 #define ActionByCancel -1
 
-typedef void (^UIAlertActionBlock) (UIAlertView *alertView, NSInteger buttonIndex);
+typedef void (^UIAlertActionBlock) (id alert, NSInteger buttonIndex);
 
 @interface AlertViewActionDispatcher : NSObject
+
+- (void)registerVoidAction:(void (^)())action forButtonIndex:(NSInteger)buttonIndex;
+
+@end
+
+@interface AlertViewActionDispatcher (Deprecated)
 
 - (void)registerAction:(UIAlertActionBlock)action forButtonIndex:(NSInteger)buttonIndex;
 - (void)registerCancelAction:(UIAlertActionBlock)action;

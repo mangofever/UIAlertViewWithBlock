@@ -7,6 +7,7 @@
 //
 
 #import "AlertViewActionDispatcher.h"
+#import <UIKit/UIKit.h>
 
 @interface AlertViewActionDispatcher ()
 
@@ -24,17 +25,12 @@
     return self;
 }
 
-- (void)registerAction:(UIAlertActionBlock)action forButtonIndex:(NSInteger)buttonIndex {
+- (void)registerVoidAction:(void (^)())action forButtonIndex:(NSInteger)buttonIndex {
     if (action) {
         [self.actionBlockDictionary setObject:action forKey:@(buttonIndex)];
     }
 }
 
-- (void)registerCancelAction:(UIAlertActionBlock)action {
-    if (action) {
-        [self.actionBlockDictionary setObject:action forKey:@(ActionByCancel)];
-    }
-}
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -55,6 +51,22 @@
         return YES;
     }
     return NO;
+}
+
+@end
+
+@implementation AlertViewActionDispatcher (Deprecated)
+
+- (void)registerAction:(UIAlertActionBlock)action forButtonIndex:(NSInteger)buttonIndex {
+    if (action) {
+        [self.actionBlockDictionary setObject:action forKey:@(buttonIndex)];
+    }
+}
+
+- (void)registerCancelAction:(UIAlertActionBlock)action {
+    if (action) {
+        [self.actionBlockDictionary setObject:action forKey:@(ActionByCancel)];
+    }
 }
 
 @end

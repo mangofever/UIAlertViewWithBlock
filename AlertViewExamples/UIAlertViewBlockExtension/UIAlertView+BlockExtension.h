@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AlertViewActionDispatcher.h"
+#import "AlertViewFluentBuilder.h"
 
 @interface UIAlertView (BlockExtension)
 
@@ -15,14 +16,24 @@
 
 + (UIAlertView *)alertViewWithTitle:(NSString *)title message:(NSString *)message;
 
-- (void)addButtonWithTitle:(NSString *)title action:(UIAlertActionBlock)action;
-- (void)addCancelButtonWithTitle:(NSString *)title action:(UIAlertActionBlock)action;
-- (void)addCancelAction:(UIAlertActionBlock)action;
+- (void)addButtonWithTitle:(NSString *)title action:(void (^)())action;
+- (void)addCancelButtonWithTitle:(NSString *)title action:(void (^)())action;
 
 @end
 
-@interface UIAlertView (ConvenientMethods)
+@interface UIAlertView (FluentMethods)
 
-+ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(UIAlertActionBlock)action;
++ (AlertViewFluentBuilder *)with;
+
++ (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(void (^)())action;
++ (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelAction:(void (^)())cancelAction otherButtonTitle:(NSString *)otherButtonTitle otherButtonAction:(void (^)())otherAction;
+
+@end
+
+@interface UIAlertView (Deprecated)
+
+- (void)addButtonWithTitle:(NSString *)title actionBlock:(UIAlertActionBlock)actionBlock;
+- (void)addCancelButtonWithTitle:(NSString *)title actionBlock:(UIAlertActionBlock)actionBlock;
+- (void)addCancelActionBlock:(UIAlertActionBlock)actionBlock;
 
 @end

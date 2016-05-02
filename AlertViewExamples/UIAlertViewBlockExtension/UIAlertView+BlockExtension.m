@@ -8,6 +8,7 @@
 
 #import "UIAlertView+BlockExtension.h"
 #import <objc/runtime.h>
+#import "AlertViewBuilder.h"
 
 @implementation UIAlertView (BlockExtension)
 
@@ -21,21 +22,18 @@
     return alertView;
 }
 
-- (void)addButtonWithTitle:(NSString *)title action:(UIAlertActionBlock)action {
+- (void)addButtonWithTitle:(NSString *)title action:(void (^)())action {
     NSInteger buttonIndex = [self addButtonWithTitle:title];
-    [self.actionDispatcher registerAction:action forButtonIndex:buttonIndex];
+    [self.actionDispatcher registerVoidAction:action forButtonIndex:buttonIndex];
 }
 
-- (void)addCancelButtonWithTitle:(NSString *)title action:(UIAlertActionBlock)action {
+- (void)addCancelButtonWithTitle:(NSString *)title action:(void (^)())action {
     NSInteger buttonIndex = [self addButtonWithTitle:title];
     self.cancelButtonIndex = buttonIndex;
-    [self.actionDispatcher registerAction:action forButtonIndex:buttonIndex];
+    [self.actionDispatcher registerVoidAction:action forButtonIndex:buttonIndex];
 }
 
-- (void)addCancelAction:(UIAlertActionBlock)action {
-    [self.actionDispatcher registerCancelAction:action];
-}
-
+#pragma mark - getter/setter for actionDispatcher with associated object
 
 - (void)setActionDispatcher:(AlertViewActionDispatcher *)actionDispatcher {
     self.delegate = actionDispatcher;
@@ -49,15 +47,50 @@
 
 @end
 
+@implementation UIAlertView (FluentMethods)
 
-@implementation UIAlertView (ConvenientMethods)
++ (AlertViewFluentBuilder *)with {
+    return nil;
+}
 
-+ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(UIAlertActionBlock)action {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-    alertView.actionDispatcher = [[AlertViewActionDispatcher alloc] init];
-    [alertView addCancelButtonWithTitle:cancelButtonTitle action:action];
++ (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(void (^)())action {
+    AlertViewBuilder *builder = [[AlertViewBuilder alloc] init];
+    builder.title = title;
+    builder.message = message;
     
-    [alertView show];
+    [builder addCancelButtonWithTitle:cancelButtonTitle action:action];
+
+    [builder.presenter show];
+}
+
++ (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelAction:(void (^)())cancelAction otherButtonTitle:(NSString *)otherButtonTitle otherButtonAction:(void (^)())otherAction {
+    AlertViewBuilder *builder = [[AlertViewBuilder alloc] init];
+    builder.title = title;
+    builder.message = message;
+    
+    [builder addCancelButtonWithTitle:cancelButtonTitle action:cancelAction];
+    [builder addButtonWithTitle:otherButtonTitle action:otherAction];
+    
+    [builder.presenter show];
+}
+
+@end
+
+@implementation UIAlertView (Deprecated)
+
+- (void)addButtonWithTitle:(NSString *)title actionBlock:(UIAlertActionBlock)actionBlock {
+    NSInteger buttonIndex = [self addButtonWithTitle:title];
+    [self.actionDispatcher registerAction:actionBlock forButtonIndex:buttonIndex];
+}
+
+- (void)addCancelButtonWithTitle:(NSString *)title actionBlock:(UIAlertActionBlock)actionBlock {
+    NSInteger buttonIndex = [self addButtonWithTitle:title];
+    self.cancelButtonIndex = buttonIndex;
+    [self.actionDispatcher registerAction:actionBlock forButtonIndex:buttonIndex];;
+}
+
+- (void)addCancelActionBlock:(UIAlertActionBlock)actionBlock {
+    [self.actionDispatcher registerCancelAction:actionBlock];
 }
 
 @end
