@@ -10,8 +10,8 @@ pod 'UIAlertViewBlockExtension'
 ## Features
 - Block expression can be used for handling UIAlertView's clicks.
 - Similar with UIAlertController in iOS 8.0
-- Automatically, use UIAlertController if it is availabel (checking via ```[UIAlertController class]```)
-- 
+- Automatically, use UIAlertController if it is availabel (checking via [UIAlertController class])
+
 ## Examples
 ### can add buttons with action of block
 ```
