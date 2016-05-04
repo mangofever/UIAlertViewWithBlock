@@ -10,6 +10,7 @@ pod 'UIAlertViewBlockExtension'
 ## Features
 - Block expression can be used for handling UIAlertView's clicks.
 - Similar with UIAlertController in iOS 8.0
+- Automatically, use UIAlertController if it is availabel (checking via [UIAlertController class])
 
 ## Examples
 ### can add buttons with action of block
@@ -28,14 +29,20 @@ UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"title" message:@"mess
 ```
 
 ### can be used with convenient method
+
+#### 1 Button - Just Cancel
 ```
-[UIAlertView showAlertWithTitle:@"Convenient!" 
-                        message:@"Good" 
-              cancelButtonTitle:@"OK" 
-                         action:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                  // do something
-                         }
-];
+[UIAlertView showWithTitle:@"Title" message:@"message" cancelButtonTitle:@"cancel" action:^{
+        NSLog(@"cancel");
+    }];
+```
+#### 2 Buttons - Cancel & OK
+```
+[UIAlertView showWithTitle:@"Title" message:@"message" cancelButtonTitle:@"cancel" cancelAction:^{
+        NSLog(@"cancel");
+    } otherButtonTitle:@"OK" otherButtonAction:^{
+        NSLog(@"ok");
+    }];
 ```
 
 ## Requirements
