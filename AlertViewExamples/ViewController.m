@@ -46,7 +46,7 @@
 }
 
 - (IBAction)clickConvenient:(id)sender {
-    [UIAlertView showWithTitle:@"test" messsage:@"gogogo" cancelButtonTitle:@"cancel" cancelAction:^{
+    [UIAlertView showWithTitle:@"title" message:@"message" cancelButtonTitle:@"cancel" cancelAction:^{
         NSLog(@"cancel");
     } otherButtonTitle:@"OK" otherButtonAction:^{
         NSLog(@"ok");

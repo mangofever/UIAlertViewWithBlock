@@ -49,7 +49,7 @@
 
 @implementation UIAlertView (ConvenientMethods)
 
-+ (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(void (^)())action {
++ (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(void (^)())action {
     BEAlertViewBuilder *builder = [[BEAlertViewBuilder alloc] init];
     builder.title = title;
     builder.message = message;
@@ -59,7 +59,7 @@
     [builder.presenter show];
 }
 
-+ (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelAction:(void (^)())cancelAction otherButtonTitle:(NSString *)otherButtonTitle otherButtonAction:(void (^)())otherAction {
++ (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelAction:(void (^)())cancelAction otherButtonTitle:(NSString *)otherButtonTitle otherButtonAction:(void (^)())otherAction {
     BEAlertViewBuilder *builder = [[BEAlertViewBuilder alloc] init];
     builder.title = title;
     builder.message = message;

@@ -22,8 +22,8 @@
 
 @interface UIAlertView (ConvenientMethods)
 
-+ (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(void (^)())action;
-+ (void)showWithTitle:(NSString *)title messsage:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelAction:(void (^)())cancelAction otherButtonTitle:(NSString *)otherButtonTitle otherButtonAction:(void (^)())otherAction;
++ (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle action:(void (^)())action;
++ (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelAction:(void (^)())cancelAction otherButtonTitle:(NSString *)otherButtonTitle otherButtonAction:(void (^)())otherAction;
 
 @end
 
