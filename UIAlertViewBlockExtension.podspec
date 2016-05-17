@@ -1,11 +1,11 @@
 Pod::Spec.new do |spec|
   spec.name         = 'UIAlertViewBlockExtension'
-  spec.version      = '1.1.1'
+  spec.version      = '1.1.2'
   spec.license      = 'MIT'
   spec.summary      = 'UIAlertView category for block expression'
   spec.homepage     = 'https://github.com/mangofever/UIAlertViewWithBlock'
   spec.author       = 'Mangofever'
-  spec.source       = { :git => 'https://github.com/mangofever/UIAlertViewWithBlock.git', :tag => '1.1.1' }
+  spec.source       = { :git => 'https://github.com/mangofever/UIAlertViewWithBlock.git', :tag => '1.1.2' }
   spec.source_files = 'AlertViewExamples/UIAlertViewBlockExtension/*'
   spec.requires_arc = true
   spec.ios.deployment_target = '4.0'
