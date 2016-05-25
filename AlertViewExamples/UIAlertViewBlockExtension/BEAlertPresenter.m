@@ -11,6 +11,45 @@
 #import "BEAlertButton.h"
 #import "UIAlertView+BlockExtension.h"
 #import "BEAlertViewBuilder.h"
+#import <objc/runtime.h>
+
+@interface UIAlertController (Private)
+
+@property (nonatomic, strong) UIWindow *alertWindow;
+
+@end
+
+@implementation UIAlertController (Private)
+
+@dynamic alertWindow;
+
+- (void)setAlertWindow:(UIWindow *)alertWindow
+{
+    objc_setAssociatedObject(self, @selector(alertWindow), alertWindow, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIWindow *)alertWindow
+{
+    return objc_getAssociatedObject(self, @selector(alertWindow));
+}
+
+- (void)prepareWindow
+{
+    self.alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.alertWindow.rootViewController = [[UIViewController alloc] init];
+    self.alertWindow.tintColor = [UIApplication sharedApplication].delegate.window.tintColor;
+    UIWindow *topWindow = [UIApplication sharedApplication].windows.lastObject;
+    self.alertWindow.windowLevel = topWindow.windowLevel + 1;
+    [self.alertWindow makeKeyAndVisible];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.alertWindow.hidden = YES;
+    self.alertWindow = nil;
+}
+
+@end
 
 @implementation BEAlertPresenter
 
@@ -18,6 +57,7 @@
 {
     if ([UIAlertController class]) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:self.builder.title message:self.builder.message preferredStyle:UIAlertControllerStyleAlert];
+        [alertController prepareWindow];
         
         for (BEAlertButton *button in self.builder.buttons) {
             UIAlertActionStyle style = UIAlertActionStyleDefault;
@@ -33,9 +73,7 @@
             [alertController addAction:cancelAction];
         }
         
-        
-        UIViewController *viewController = [self visibleViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
-        [viewController presentViewController:alertController animated:YES completion:nil];
+        [alertController.alertWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
     } else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:self.builder.title message:self.builder.message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
         alertView.actionDispatcher = [[BEAlertViewActionDispatcher alloc] init];
@@ -49,32 +87,6 @@
         }
         [alertView show];
     }
-}
-
-- (UIViewController *)visibleViewController:(UIViewController *)rootViewController
-{
-    if (rootViewController.presentedViewController == nil)
-    {
-        return rootViewController;
-    }
-    if ([rootViewController.presentedViewController isKindOfClass:[UINavigationController class]])
-    {
-        UINavigationController *navigationController = (UINavigationController *)rootViewController.presentedViewController;
-        UIViewController *lastViewController = [[navigationController viewControllers] lastObject];
-        
-        return [self visibleViewController:lastViewController];
-    }
-    if ([rootViewController.presentedViewController isKindOfClass:[UITabBarController class]])
-    {
-        UITabBarController *tabBarController = (UITabBarController *)rootViewController.presentedViewController;
-        UIViewController *selectedViewController = tabBarController.selectedViewController;
-        
-        return [self visibleViewController:selectedViewController];
-    }
-    
-    UIViewController *presentedViewController = (UIViewController *)rootViewController.presentedViewController;
-    
-    return [self visibleViewController:presentedViewController];
 }
 
 @end
