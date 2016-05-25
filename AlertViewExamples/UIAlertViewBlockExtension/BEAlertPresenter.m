@@ -43,6 +43,12 @@
     [self.alertWindow makeKeyAndVisible];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.alertWindow.hidden = YES;
+    self.alertWindow = nil;
+}
+
 @end
 
 @implementation BEAlertPresenter
