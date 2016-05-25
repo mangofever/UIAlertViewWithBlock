@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'UIAlertViewBlockExtension'
-  spec.version      = '1.1.2'
+  spec.version      = '1.1.3'
   spec.license      = 'MIT'
   spec.summary      = 'UIAlertView category for block expression'
   spec.homepage     = 'https://github.com/mangofever/UIAlertViewWithBlock'
