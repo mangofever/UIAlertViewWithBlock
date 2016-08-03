@@ -37,7 +37,6 @@
 {
     self.alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.alertWindow.rootViewController = [[UIViewController alloc] init];
-    self.alertWindow.tintColor = [UIApplication sharedApplication].delegate.window.tintColor;
     UIWindow *topWindow = [UIApplication sharedApplication].windows.lastObject;
     self.alertWindow.windowLevel = topWindow.windowLevel + 1;
     [self.alertWindow makeKeyAndVisible];
