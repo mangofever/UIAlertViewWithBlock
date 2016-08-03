@@ -64,7 +64,7 @@
                 style = UIAlertActionStyleCancel;
             }
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:button.title style:style
-                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                 handler:^(UIAlertAction *action) {
                                                                      if(button.action) {
                                                                          button.action();
                                                                      }
